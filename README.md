@@ -1,4 +1,4 @@
-# Task 2 - User CRUD API using Express and MongoDB
+# Task 2 - CRUD Operations using Express and MongoDB
 
 ## Implementation Steps
 
@@ -9,38 +9,38 @@
 5. Create the basic project folder structure.
 6. Create a ".env" file to store environment variables.
 7. Configure MongoDB connection in "src/config/db.js".
-8. Make database connection using MongoClient and async/await.
+8. Establish database connection using MongoClient and async/await.
 9. Create a reusable database utility using the "getDB()" function.
-10. Create "user.model.js" to handle database operations.
+10. Create "user.model.js" for User database operations.
 11. Implement Create User functionality using "insertOne()".
 12. Implement Fetch All Users functionality using "find().toArray()".
 13. Implement Fetch User By Id functionality using "findOne()".
 14. Implement Update User functionality using "updateOne()".
 15. Implement Delete User functionality using "deleteOne()".
-16. Create "user.service.js" to handle business logic.
-17. Create "user.handler.js" to handle requests and responses.
-18. Create "user.routes.js" to define API endpoints.
-19. Create "app.js" to configure middleware and routes.
-20. Create "server.js" to establish database connection and start the server.
-21. Test Create User API using Postman.
-22. Test Fetch All Users API using Postman.
-23. Test Fetch User By Id API using Postman.
-24. Test Update User API using Postman.
-25. Test Delete User API using Postman.
-26. Verify user data storage in MongoDB.
-27. Implement and verify complete CRUD operations for the Users collection.
+16. Create "user.service.js" to handle User business logic.
+17. Create "user.handler.js" to handle User requests and responses.
+18. Create "user.routes.js" to define User API endpoints.
+19. Create "product.model.js" for Product database operations.
+20. Implement Create Product functionality using "insertOne()".
+21. Implement Fetch All Products functionality using "find().toArray()".
+22. Implement Fetch Product By Id functionality using "findOne()".
+23. Implement Update Product functionality using "updateOne()".
+24. Implement Delete Product functionality using "deleteOne()".
+25. Create "product.service.js" to handle Product business logic.
+26. Create "product.handler.js" to handle Product requests and responses.
+27. Create "product.routes.js" to define Product API endpoints.
+28. Create "app.js" to configure middleware and register routes.
+29. Create "server.js" to establish database connection and start the application.
+30. Test User CRUD APIs using Postman.
+31. Test Product CRUD APIs using Postman.
+32. Verify data persistence using MongoDB.
+33. Successfully implement and test CRUD operations for both Users and Products collections.
 
-## API Testing Guide
+## Collections
 
-### Create User
+### Users Collection
 
-Method: POST
-
-Endpoint:
-
-[http://localhost:5000/users](http://localhost:5000/users)
-
-Sample Input:
+Sample Document:
 
 {
 "name": "Aarav Sharma",
@@ -48,74 +48,49 @@ Sample Input:
 "age": 24
 }
 
-Expected Result:
+### Products Collection
 
-A new user document is inserted into the MongoDB Users collection and an insertedId is returned.
-
-### Fetch All Users
-
-Method: GET
-
-Endpoint:
-
-[http://localhost:5000/users](http://localhost:5000/users)
-
-Expected Result:
-
-Returns all user documents stored in the Users collection.
-
-### Fetch User By Id
-
-Method: GET
-
-Endpoint:
-
-[http://localhost:5000/users/](http://localhost:5000/users/)<user_id>
-
-Example:
-
-[http://localhost:5000/users/6a310d5962ba90f8a5956068](http://localhost:5000/users/6a310d5962ba90f8a5956068)
-
-Expected Result:
-
-Returns the user document associated with the provided MongoDB ObjectId.
-
-### Update User
-
-Method: PUT
-
-Endpoint:
-
-[http://localhost:5000/users/](http://localhost:5000/users/)<user_id>
-
-Sample Input:
+Sample Document:
 
 {
-"age": 25
+"productName": "iPhone 15",
+"brand": "Apple",
+"category": "Mobile",
+"mrp": 79999,
+"sellingPrice": 74999,
+"stock": 25
 }
 
-Expected Result:
-
-Updates the specified fields of the selected user document.
-
-### Delete User
-
-Method: DELETE
-
-Endpoint:
-
-[http://localhost:5000/users/](http://localhost:5000/users/)<user_id>
-
-Expected Result:
-
-Deletes the user document associated with the provided MongoDB ObjectId.
-
 ## Environment Variables
-
-Create a ".env" file in the project root and add:
 
 PORT="port number"
 
 MONGO_DATABASE_URL="url"
 
-DATABASE_NAME=db name
+DATABASE_NAME="database name"
+
+## API Endpoints
+
+### Users
+
+POST /users
+
+GET /users
+
+GET /users/:id
+
+PUT /users/:id
+
+DELETE /users/:id
+
+### Products
+
+POST /products
+
+GET /products
+
+GET /products/:id
+
+PUT /products/:id
+
+DELETE /products/:id
